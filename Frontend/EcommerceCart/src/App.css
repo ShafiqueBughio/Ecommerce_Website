@@ -1,0 +1,727 @@
+
+
+
+
+/* App.css */
+.body{
+ 
+  font-family: 'poppins';
+}
+
+.items-container {
+  width: 250px; /* Adjust the width of each card as needed */
+  margin: 10px; /* Adjust margin between cards as needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.items-container h4 {
+  margin-top: 0;
+}
+
+.items-container p {
+  margin: 5px 0;
+}
+
+.items-container button {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.items-container button:hover {
+  background-color: #0056b3;
+}
+
+.card-container{
+  /* margin-top: -180px; */
+  margin-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  
+}
+
+
+
+
+
+/* App.css */
+
+/* Container for the cart */
+.Cart {
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: 100px;
+  right: 300px; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 28px;
+  border-radius: 8px;
+  z-index: 9999;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  max-height: 80vh; /* Set max height */
+  overflow-y: auto; 
+
+}
+.blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  z-index: 9998;
+  backdrop-filter: blur(5px); /* Applies blur effect */
+}
+
+/* Cart header */
+.Cart h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Cart items list */
+.Cart ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Cart li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+}
+
+.remove_btn{
+  background: none;
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+
+}
+
+.Cart li:last-child {
+  border-bottom: none;
+}
+
+/* Total bill */
+.Cart-container h2 {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.img{
+  width: 100%;
+  height: 200px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.img:hover{
+  transform: translateY(-4px) scale(1.04);
+  border-radius: 5px;
+  /* width:94%;
+  height: 160px; */
+  cursor: pointer;
+}
+
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+.shopping-btn{
+     /* margin-left: 34px; */
+    /* margin-top: 20px; */
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    /* cursor: pointer; */
+    transition: background-color 0.3s ease;
+    margin: 20px;
+}
+
+.buttons-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.mr-2{
+  color: white;
+}
+
+.cart-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color:#007bff; /* Light background color */
+  color: white;
+  border-radius: 8px;
+  margin-top: -12px;
+  padding-top: 12px;
+  padding-left: 16px;
+}
+
+.back-button {
+  position: absolute;
+  left: 20px;
+  cursor: pointer;
+}
+
+.cart_head {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.cart-item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.remove_btn {
+  margin-left: auto;
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 50%;
+  height: 32px;
+  width: 28px;
+  margin-top: -50px;
+}
+
+/* QuantityIncrementor.css */
+
+.quantity-incrementor-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius:4px ;
+}
+
+.quantity-button {
+  /* background-color: #007bff; */
+  color: black;
+  /* border: 1px solid black; */
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* .quantity-decrement-button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.quantity-increment-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+} */
+
+.quantity-display {
+  font-size: 16px;
+  margin: 0 10px;
+}
+/* Container for the whole Home component */
+.Home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background-image: url('C:\Users\shafi\Desktop\React Practice\Ecommerce Cart\EcommerceCart\public\Blue and Yellow Gradient Modern Desktop Wallpaper.png');
+  background-size: cover; /* Make sure the image covers the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  font-family: Arial, sans-serif; /* A clean, modern font */
+}
+
+
+/* Container for the display elements */
+.display-container {
+  text-align: center;
+  /* background-color: white; */
+  color: white;
+  /* padding: 40px; */
+  border-radius: 15px;
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); Subtle shadow for a lifted effect */
+  max-width: 400px;
+  width: 100%;
+  padding: 0.5rem;
+  padding-top: 2rem;
+}
+
+/* Heading style */
+.home-head {
+  font-size: 3.5em; /* Large font size */
+  /* color: #333; Dark text color */
+  margin-bottom: 20px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Paragraph style */
+.home-para {
+  font-size: 1.2em; /* Slightly larger text */
+  color: white; /* Medium gray text color */
+  margin-bottom: 30px;
+}
+
+/* Button group to center buttons */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Button style */
+/* Button style */
+.home-btn {
+  background-image: linear-gradient(to right, #fff 50%, #d7df23 50%); /* Half of the button will be the primary blue color and the other half will be the darker blue color */
+  background-size: 200% 100%; /* Double the width of the button for the transition */
+  color: black;
+  border: none;
+  padding: 12px 34px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-position 0.5s; /* Smooth transition for hover effect */
+}
+
+/* Button hover effect */
+.home-btn:hover {
+  background-position: right;
+  color: #fff; /* Move the background position to the right when hovering */
+}
+
+
+/* Style for the entire sign-up page */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background: linear-gradient(to right, #f7f8fc, #e6e9f0);/* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Background blur */
+  width: 100vw;
+}
+
+/* Style for the sign-up card */
+.signup-card {
+  background: white; /* White background for the card */
+  padding: 44px; /* Padding inside the card */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center; /* Center text inside the card */
+}
+
+/* Label styles */
+.email-label, .password-label {
+  display: block;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  margin-top: -20px;
+  color: #007bff;
+}
+
+/* Input field styles */
+.email-input, .password-input {
+  width: 100%;
+  padding: 10px 0;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  font-size: 16px;
+
+
+}
+.email-input, .password-input:focus {
+  border-bottom: 2px solid #007BFF;
+}
+
+.email-input, .password-input::placeholder{
+  color: #999;
+}
+/* Button styles */
+.signup-btn {
+  background: #007bff; /* Primary blue color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out; /* Smooth transition for hover effect */
+  position: relative;
+  overflow: hidden;
+  width: 10.5rem;
+  margin-top: -10px;
+  
+}
+
+/* Button hover effect */
+.signup-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease-in-out;
+}
+
+.signup-btn:hover::before {
+  left: 100%;
+}
+
+.signup-success {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  color: #4caf50;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signinn-btn {
+  margin-top: 20px;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px; /* Added margin-top to space the button from inputs */
+}
+
+.Conditions-span{
+  color: #007bff;
+}
+.google-img{
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  margin: 5px;
+
+
+}
+.Github-img{
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  margin: 5px;
+
+}
+
+.Forget-para{
+  margin-left: 90px;
+  color: #007bff;
+  cursor: pointer;
+
+}
+.Login-btn{
+  background-image: linear-gradient(to right, #fff 50%, #d7df23 50%); /* Half of the button will be the primary blue color and the other half will be the darker blue color */
+  background-size: 200% 100%; /* Double the width of the button for the transition */
+  /* color: black; */
+  /* border: 10px solid black; */
+  /* padding: 12px 34px; */
+  /* font-size: 1em; */
+  /* border-radius: 5px; */
+  /* cursor: pointer; */
+  transition: background-position 0.5s; /* Smooth transition for hover effect */
+  color: white;
+}
+.Login-btn:hover{
+  background-position: right;
+  color: #fff; 
+}
+.Signup-btn{
+  background-image: linear-gradient(to right, #fff 50%, #d7df23 50%);
+  background-size: 200% 100%;
+  transition: background-position 0.5s; 
+  color: white;
+}
+.Signup-btn:hover{
+  background-position: right;
+  color: #fff; 
+}
+.navbar-custom{
+  background-color: #001f3f; 
+}
+
+
+
+
+.contact-btn {
+  background-image: linear-gradient(to right, #d7df23 50%,  #fff 50%);
+  background-size: 200% 100%;
+  background-position: right; /* Start with the background positioned to the right */
+  color: black;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-position 0.5s, color 0.5s; /* Smooth transition for hover effect */
+  margin-left: 20px;
+}
+
+/* Button hover effect */
+.contact-btn:hover {
+  background-position: left; /* Move the background position to the left when hovering */
+  color: #fff;
+}
+
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.contact-img {
+  background-image: url('C:\Users\shafi\Desktop\React Practice\Ecommerce Cart\EcommerceCart\public\wp6944127.webp');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Half viewport height */
+  width: 100vw; /* Full width */
+  background-size: cover; /* Cover the entire container */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  margin-bottom: 4rem;
+}
+
+.contact-h3 {
+  color: white;
+  margin-top: 40px;
+}
+
+.google-map {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Space between image and map */
+}
+
+.google-map iframe {
+  border: 0;
+  height: 400px; /* Fixed height for the map */
+  width: 70%; /* Responsive width */
+}
+
+.page-content {
+  height: 100%; /* Make sure the content takes full height */
+}
+
+
+
+.address {
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  margin-top: 4rem;
+  margin-left: -44rem;
+  /* background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.address div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.address div:last-child {
+  margin-bottom: 0;
+}
+
+.address h5 {
+  margin: 0 0 5px 10px;
+  font-size: 1.1em;
+  color: #333;
+  padding: 4px;
+}
+
+.address p {
+  margin: 0 0 0 10px;
+  color: #666;
+  padding: 4px;
+}
+
+.address svg {
+  font-size: 1.5em;
+  color: #007bff;
+  padding: 8px;
+}
+
+.mail {
+  padding: 50px;
+  border-radius: 8px;
+  width: 400px;
+  margin-left: 28rem;
+  /* background-color: #ffffff; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  margin-top: -26rem;
+  /* height: 60vh; */
+}
+
+.mail input,
+.mail textarea {
+  width:30vw;
+    padding:15px;
+    margin-bottom:17px;
+    outline:none;
+    border:1px solid #ccc;
+}
+
+.mail input:focus,
+.mail textarea:focus {
+  border-color: #007bff;
+}
+
+.mail input::placeholder,
+.mail textarea::placeholder {
+  color: #aaa;
+}
+
+.mail .text-input {
+  height: 40px;
+}
+
+.mail .Email-input {
+  height: 40px;
+}
+
+.mail .message-input {
+  height: 100px;
+  resize: none;
+}
+.msg-btn{
+  display: inline-block;
+  color:black;
+  border:1px solid #007bff;;
+  background:transparent;
+  font-size:13px;
+  padding:12px 34px;
+  position:relative;
+  text-decoration:none;
+  cursor:pointer;
+}
+.msg-btn:hover{
+  border:1px solid #007bff;
+  background-color: #007bff;
+  transition:1s;
+  color: white;
+}
+
+/* BallFollowCursor.css */
+.ball {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color:#d7df23 ;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.1s;
+  transform: translate(-50%, -50%);
+}
+/* styles.css */
+
+.About-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.About-img {
+  background: linear-gradient(to right, #7c3aed, #d946ef);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Half viewport height */
+  width: 100vw; /* Full width */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  margin-bottom: 4rem;
+}
+
+.About-h3 {
+  color: white;
+  margin-top: 40px;
+}
+
