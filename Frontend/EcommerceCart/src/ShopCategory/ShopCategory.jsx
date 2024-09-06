@@ -5,7 +5,10 @@ import Items from '../Compponents/Items';
 
 
 const ShopCategory = (props) => {
-    const {Product_Data,Handle_Search,query} = useContext(ShopContext);
+    const {Product_Data,Handle_Search,query,Querry_Data} = useContext(ShopContext);
+
+     // Check whether to display Querry_Data or Product_Data
+  const displayData = Querry_Data && Querry_Data.length > 0 ? Querry_Data : Product_Data;
   return (
     <div>
       <img className='block w-4/5 my-7 mx-auto' src={props.banner} alt="" />
@@ -42,7 +45,7 @@ const ShopCategory = (props) => {
 
 
       <div className='my-[20px] mx-[20px] flex items-center  justify-center max-sm:justify-start space-x-2 max-sm:space-x-0 flex-wrap'>
-        {Product_Data.map((item,index)=>{
+        {displayData.map((item,index)=>{
             if(props.category===item.category){
                return <Items 
             key={index}

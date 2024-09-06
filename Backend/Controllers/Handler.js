@@ -64,16 +64,26 @@ async function Handle_Delete_Product(req,res){
     })
 }
 
-async function Handle_Get_All_Products(req,res){
-    const products = await Product.find({});
+async function Handle_Get_All_Searched_Products(req,res){
 
-    if(products){
-        console.log("All Products Fetched");
-       res.json(products);
-    }
-    else{
-        res.json({status:404,message:"Products not found"})
-    }
+    const query = req.query.q ? req.query.q.trim() : '';  // Trim to avoid extra spaces
+
+    try {   
+        let products;
+              if(query){
+                 products = await Product.find({
+                    name: { $regex: query, $options: 'i' }  // Case-insensitive regex search
+                });
+                console.log("Matching Products Fetched");
+                res.json(products);  // Send the results back to the client
+            
+            }
+          
+              }  
+                
+            catch (err) {
+                res.status(500).json({ error: err.message });
+            }
 }
 
 async function Handle_New_Collections(req,res){
@@ -100,27 +110,12 @@ async function Handle_Popular_Products(req,res){
 }
 
 
-//Search Product Handler
-async function Handle_Product_Search(req,res){
+async function Handle_Get_All_Products(req,res){
 
-    const query = req.query.q ? req.query.q.trim() : '';  // Trim to avoid extra spaces
-
-    try {
-        let products;
-        
-        if (query) {
-          // If a query is provided, filter products by name
-          products = await Product.find({
-            name: { $regex: query, $options: 'i' }  // Case-insensitive regex search
-        });
-        console.log("Matching Products Fetched");
-        res.json(products);  // Send the results back to the client
-    }
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
+    const  products = await Product.find({});
+    res.json(products);
 
 }
 
 
-module.exports = {Handle_Product_Search,Handle_Popular_Products,Handle_New_Collections,Handle_Upload_Image,Handle_Cretae_Product_To_DB,Handle_Delete_Product,Handle_Get_All_Products}
+module.exports = {Handle_Popular_Products,Handle_New_Collections,Handle_Upload_Image,Handle_Cretae_Product_To_DB,Handle_Delete_Product,Handle_Get_All_Searched_Products,Handle_Get_All_Products}

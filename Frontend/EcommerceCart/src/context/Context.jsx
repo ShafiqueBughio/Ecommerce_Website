@@ -27,17 +27,39 @@ const [cartItems,SetCartItems] = useState(GetDefaultCart());
 
 const [query,Set_Querry] = useState("");
 
+const [Querry_Data,Set_Querry_Data] = useState([]);
+
 function Handle_Search(e){
-  const value = e.target.value;
+  let value = e.target.value;
   Set_Querry(value);
 }
 
+// UseEffect for all products mount on screen
 useEffect(()=>{
   fetch("http://localhost:5000/allproducts")
   .then((resp)=>resp.json())
   .then((data)=>SetProductData(data));
+},[])
 
-  //Get Cart Data
+ // Handle search functionality
+ useEffect(() => {
+  if (query) {
+    // If there is a query, fetch the searched products
+    fetch(`http://localhost:5000/searchproducts?q=${query}`)
+      .then((resp) => resp.json())
+      .then((data) => Set_Querry_Data(data));
+  } else {
+    // If query is empty, reset to show all products
+    Set_Querry_Data([]); // Reset search data
+  }
+}, [query]);
+
+
+
+
+
+//Get Cart Data
+useEffect(()=>{
   if(localStorage.getItem('auth-token')){
     fetch("http://localhost:5000/cartData",{
       method:"POST",
@@ -54,7 +76,6 @@ useEffect(()=>{
     })
   }
 },[])
-
 
 const AddToCart = (ItemId)=>{
 SetCartItems((prev)=>({...prev,[ItemId]:prev[ItemId]+1}))
@@ -134,7 +155,7 @@ const RemoveFromCart = (ItemId)=>{
 
     return(
         <>
-        <ShopContext.Provider value={{HandleCartCount,Product_Data,cartItems,AddToCart,RemoveFromCart,GetTotalCartAmount,Handle_Search,query}}>
+        <ShopContext.Provider value={{HandleCartCount,Product_Data,cartItems,AddToCart,RemoveFromCart,GetTotalCartAmount,Handle_Search,query,Querry_Data}}>
         {props.children}
         </ShopContext.Provider>
         </>
