@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import Filter_Product from '../Filter_Product/Filter_Product';
 
@@ -33,9 +34,10 @@ async function Handle_remove_product (id){
   .then((data)=>{
     if(data.status === 200){
        Get_All_Products();
+      toast.success(data.message)
     }
     else{
-      alert('Failed');
+     toast.error("Failed to remove")
     }
   })
 }

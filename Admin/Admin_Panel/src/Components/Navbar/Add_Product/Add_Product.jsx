@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import upload_image from "../../../assets/upload_area.svg"
+import { toast } from 'react-toastify';
+
 
 const Add_Product = () => {
 
@@ -58,7 +60,16 @@ const Add_Product = () => {
           },
           body:JSON.stringify(Product)
         })
-        .then((resp)=>resp.json()).then((data)=>{data.status===200?alert("Product Added"):alert("Failed")});
+        .then((resp)=>resp.json()).then((data)=>
+       {
+        if(data.status === 200){
+          toast.success(data.message);
+        } 
+        else{
+          toast.error("Failed to add")
+        }
+       }
+        );
       }
   }
 

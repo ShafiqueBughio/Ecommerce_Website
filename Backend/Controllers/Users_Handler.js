@@ -112,4 +112,7 @@ async function Get_Cart_Data(req,res){
 }
 
 
+
+
+
 module.exports = {Get_Cart_Data,Handle_remove_From_Cart,Handle_Signup,Handle_Login,fetch_user,Handle_Add_To_Cart}

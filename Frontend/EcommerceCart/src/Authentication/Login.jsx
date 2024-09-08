@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import Signup from './Signup';
 
+//toastify
+import { toast} from 'react-toastify';
+
 const Login = () => {
+
+
+
   const [login,Setlogin] = useState(true);
   
   const [formData,SetFormData] = useState({
@@ -37,10 +43,14 @@ const Login = () => {
 
     if(response_data.success){
       localStorage.setItem("auth-token",response_data.token);
-      window.location.replace("/");
+      
+      toast.success(`Welcome,! You're now logged in`);
+      setTimeout(() => {
+        window.location.replace("/");
+      }, 1000);  // Delay of 1 second (1000 milliseconds)
     }
     else{
-      alert(response_data.errors);
+    toast.error(response_data.errors);
     }
   }
 

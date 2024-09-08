@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+//toastify
+import { toast} from 'react-toastify';
 
 const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
 
@@ -33,7 +35,8 @@ const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
 
         if(response_data.success){
           localStorage.setItem("auth-token",response_data.token);
-          window.location.replace("/");
+          toast.success("Account created successfully! Start shopping now.")
+         setTimeout(()=>{ window.location.replace("/");},2000)
         }
         
         else{

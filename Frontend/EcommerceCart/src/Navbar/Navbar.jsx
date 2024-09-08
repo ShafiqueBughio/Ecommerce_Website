@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/Ecommerce_Frontend_Assets/logo.png";
 import cart_icon from "../assets/Ecommerce_Frontend_Assets/cart_icon.png";
 import { ShopContext } from "../context/Context";
+import { toast} from 'react-toastify';
 
 function MyNavbar() {
   const [menuOpen, setMenuOpen] = useState(false); // State to handle menu toggle
@@ -13,7 +14,10 @@ function MyNavbar() {
 
   function Logout_Handler(){
     localStorage.removeItem('auth-token');
-    window.location.replace("/");
+    toast.success("Logout successful! Thank you for visiting.");
+    setTimeout(() => {
+      window.location.replace("/");
+    }, 2000);
   }
 
   return (

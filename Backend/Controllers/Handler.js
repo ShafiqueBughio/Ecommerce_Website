@@ -1,6 +1,6 @@
 
 const {Product} = require("../Model/Scheema_Model")
-const {port} = require("../index")
+const {port} = require("../index");
 
 function Handle_Upload_Image(req,res){
     res.json({
@@ -37,7 +37,7 @@ async function Handle_Cretae_Product_To_DB(req,res){
     if(product){
         res.json({
             status:200,
-            message:"Product has been added to database successfully."
+            message:"Product Added"
         })
     }
     else{
@@ -53,7 +53,7 @@ async function Handle_Delete_Product(req,res){
     .then(()=>{
         res.json({
             status:200,
-            message:"Product removed from database."
+            message:"Product removed."
         })
     })
     .catch((err)=>{

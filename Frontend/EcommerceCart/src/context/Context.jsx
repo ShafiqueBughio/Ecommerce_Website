@@ -21,6 +21,8 @@ export const Shop_Context_Provider = (props)=>{
     return cart
   }
 
+
+
 const [Product_Data,SetProductData] = useState([]);
 
 const [cartItems,SetCartItems] = useState(GetDefaultCart());
@@ -76,6 +78,10 @@ useEffect(()=>{
     })
   }
 },[])
+
+
+
+
 
 const AddToCart = (ItemId)=>{
 SetCartItems((prev)=>({...prev,[ItemId]:prev[ItemId]+1}))

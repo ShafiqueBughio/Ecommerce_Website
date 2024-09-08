@@ -1,5 +1,8 @@
+//import dotenv to load environment variables
+require('dotenv').config();
+
 const jwt = require("jsonwebtoken");
-const Secret_Key = "#shafiq_@store";
+const Secret_Key = process.env.JWT_SECRET;
 
 //Setuser Function - create token
 function Set_User(user){

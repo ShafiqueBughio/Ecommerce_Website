@@ -2,10 +2,13 @@ import React from 'react';
 import cart_cross_icon from "../assets/Ecommerce_Frontend_Assets/cart_cross_icon.png";
 import { useContext } from 'react';
 import { ShopContext } from '../context/Context';
+import { useNavigate } from 'react-router-dom';
 
 
 const CartItems = () => {
   const { GetTotalCartAmount, cartItems, RemoveFromCart, AddToCart,Product_Data } = useContext(ShopContext);
+
+  const navigate = useNavigate();
 
   return (
     <div className='my-24 mx-4 md:mx-10 lg:mx-[170px]'>
@@ -68,7 +71,7 @@ const CartItems = () => {
               <h3 className='font-semibold'>${GetTotalCartAmount()}</h3>
             </div>
           </div>
-          <button className='w-full sm:w-[262px] h-[58px] bg-latest_color text-white text-base sm:text-xl font-semibold cursor-pointer rounded-md hover:bg-red-600 transition-colors'>
+          <button className='w-full sm:w-[262px] h-[58px] bg-latest_color text-white text-base sm:text-xl font-semibold cursor-pointer rounded-md hover:bg-red-600 transition-colors' onClick={()=>{navigate("/order")}}>
             Proceed To Checkout
           </button>
         </div>

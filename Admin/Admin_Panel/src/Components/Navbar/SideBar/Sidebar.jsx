@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import add_product_icon from "../../../assets/Product_Cart.svg"
 import list_product_icon from "../../../assets/Product_list_icon.svg"
+import Orders from '../Orders/Orders';
 
 const Sidebar = () => {
   return (
@@ -18,6 +19,13 @@ const Sidebar = () => {
       <div className='flex items-center justify-center my-0 mx-5 py-3 px-[10px] rounded-md bg-custom-bg gap-5 cursor-pointer max-sm:m-0'>
         <img src={list_product_icon} alt="add product" />
         <p>Product List</p>
+      </div>
+      </Link>
+
+      <Link to={'/orders'} style={{textDecoration:"none"}}>
+      <div className='flex items-center justify-center my-0 mx-5 py-3 px-[10px] rounded-md bg-custom-bg gap-5 cursor-pointer max-sm:m-0'>
+        <img src={list_product_icon} alt="add product" />
+        <p>Orders</p>
       </div>
       </Link>
     </div>

@@ -1,5 +1,7 @@
+require("dotenv").config();
+
 //defining port 
-const port = 5000;
+const port = process.env.PORT||5000;
 module.exports = {port};
 //import
 const express = require("express");
@@ -14,7 +16,8 @@ const Product_Route = require("./Routes/routes")
 //user route 
 const User_Route = require("./Routes/Users_routes");
 //import MongoDb Connection
-const {MongoDb_Connection} = require("./Connection")
+const {MongoDb_Connection} = require("./Connection");
+const { Order_Router } = require("./Routes/Order_Routes");
 
 //response of a request directly convert into json 
 app.use(express.json());
@@ -24,7 +27,7 @@ app.use(express.json());
 app.use(cors());
 
 //connecting mongoDB atlas
-MongoDb_Connection("mongodb+srv://shafique63005:%23Bughio123@cluster0.us0afxz.mongodb.net/e-commerce")
+MongoDb_Connection(process.env.MONGO_URL)
 .then(()=>{ console.log("MongoDb Connected")})
 .catch((err)=>{console.log(`Something went Wrong MongoDb Can't connected. ${err}`)});
 
@@ -34,6 +37,9 @@ app.use(User_Route);
 
 //Product Routes
 app.use(Product_Route);
+
+//order Route
+app.use(Order_Router);
 
 
 
