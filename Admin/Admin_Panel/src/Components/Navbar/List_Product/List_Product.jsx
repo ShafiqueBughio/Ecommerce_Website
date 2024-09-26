@@ -9,7 +9,7 @@ const List_Product = () => {
   const [all_Products,Set_All_Products] = useState([]);
 
   async function Get_All_Products (){
-    await fetch("http://localhost:5000/allproducts")
+    await fetch("http://localhost:5001/allproducts")
     .then((resp)=>resp.json())
     .then((data)=>{Set_All_Products(data)});
   }
@@ -20,7 +20,7 @@ useEffect(()=>{
 
 //function for Remove button
 async function Handle_remove_product (id){
-  await fetch("http://localhost:5000/removeproduct",{
+  await fetch("http://localhost:5001/removeproduct",{
     method:'DELETE', 
     headers:{
       Accept:'application/json',

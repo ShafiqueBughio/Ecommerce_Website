@@ -18,6 +18,8 @@ import Footer from './Products/Footer.jsx';
 import ShopCategory from './ShopCategory/ShopCategory.jsx';
 import Detail from './ProductDetails/Detail.jsx';
 import Place_Order from './PlaceOrder/Place_Order.jsx';
+import Forgot_Password from './Authentication/Forgot_Password.jsx';
+import Reset_Password from './Authentication/Reset_Password.jsx';
 
 
 
@@ -56,6 +58,8 @@ function App() {
           <Route path='/login' element = {<Login/>}/>
          
           <Route path='/detail/:detailId' element = {<Detail/>}/>
+          <Route path = "/forgot" element = {<Forgot_Password/>}/>
+          <Route path= "/reset-password/:userId/:token"element={<Reset_Password/>}/>
          </Routes>
          <Footer/>
          </BrowserRouter>

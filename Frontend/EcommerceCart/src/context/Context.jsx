@@ -38,7 +38,7 @@ function Handle_Search(e){
 
 // UseEffect for all products mount on screen
 useEffect(()=>{
-  fetch("http://localhost:5000/allproducts")
+  fetch("http://localhost:5001/allproducts")
   .then((resp)=>resp.json())
   .then((data)=>SetProductData(data));
 },[])
@@ -47,7 +47,7 @@ useEffect(()=>{
  useEffect(() => {
   if (query) {
     // If there is a query, fetch the searched products
-    fetch(`http://localhost:5000/searchproducts?q=${query}`)
+    fetch(`http://localhost:5001/searchproducts?q=${query}`)
       .then((resp) => resp.json())
       .then((data) => Set_Querry_Data(data));
   } else {
@@ -63,7 +63,7 @@ useEffect(()=>{
 //Get Cart Data
 useEffect(()=>{
   if(localStorage.getItem('auth-token')){
-    fetch("http://localhost:5000/cartData",{
+    fetch("http://localhost:5001/cartData",{
       method:"POST",
       headers:{
         Accept:"application/form-data",
@@ -88,7 +88,7 @@ SetCartItems((prev)=>({...prev,[ItemId]:prev[ItemId]+1}))
 
 //check is user authenticate or not 
 if(localStorage.getItem('auth-token')){
-  fetch("http://localhost:5000/AddToCart",{
+  fetch("http://localhost:5001/AddToCart",{
     method:"POST",
     headers:{
       Accept:"application/form-data",
@@ -112,7 +112,7 @@ const RemoveFromCart = (ItemId)=>{
   SetCartItems((prev)=>({...prev,[ItemId]:prev[ItemId]-1}))
  
     if(localStorage.getItem('auth-token')){
-      fetch("http://localhost:5000/removeCart",{
+      fetch("http://localhost:5001/removeCart",{
         method:"DELETE",
         headers:{
           Accept:"application/form-data",

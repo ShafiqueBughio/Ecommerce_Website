@@ -5,7 +5,7 @@ const Popular = () => {
   const [popular_women,Set_Popular_Women] = useState([]);
 
   useEffect(()=>{
-    fetch("http://localhost:5000/popular")
+    fetch("http://localhost:5001/popular")
     .then((resp)=>resp.json())
     .then((data)=>{
       Set_Popular_Women(data);

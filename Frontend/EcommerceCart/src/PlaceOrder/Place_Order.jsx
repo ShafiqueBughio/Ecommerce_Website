@@ -1,8 +1,11 @@
 import React from 'react';
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
 import { ShopContext } from '../context/Context';
 
 const Place_Order = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     const { GetTotalCartAmount } = useContext(ShopContext);
 
     return (

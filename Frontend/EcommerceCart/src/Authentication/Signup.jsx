@@ -20,7 +20,7 @@ const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
 
       let response_data;    //this contain success ,token
 
-        await fetch("http://localhost:5000/signup",{
+        await fetch("http://localhost:5001/signup",{
             method:"post",
             headers:{
                 Accept:"application/form-data",
@@ -95,7 +95,7 @@ const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
 <button className=" md:w-full lg:w-full max-sm:w-3/6 max-sm:ml-20 bg-latest_color text-white py-2 rounded-md hover:bg-red-600 transition-colors hover:bg-[linear-gradient(90deg,rgba(100,45,135,1)0%,rgba(200,33,33,1)0%,rgba(202,141,55,1)100%)]" type='submit' onClick={()=>SignUp_Api_Caller()}>Continue</button>
 
 <p className="text-center text-sm text-gray-600 mt-4">
-  Don't have an account? <span className="text-red-600 hover:underline cursor-pointer" onClick={()=>{Setlogin(true)}}>Login here</span>
+  Already have an account? <span className="text-red-600 hover:underline cursor-pointer" onClick={()=>{Setlogin(true)}}>Login here</span>
 </p>
 
 <div className="mt-6 flex items-center space-x-2 max-sm:w-4/5 max-sm:ml-10">

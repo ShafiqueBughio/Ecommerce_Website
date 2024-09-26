@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Signup from './Signup';
+import { Link } from 'react-router-dom';
 
 //toastify
 import { toast} from 'react-toastify';
@@ -28,7 +29,7 @@ const Login = () => {
   async function Login_Api_Caller(){
     let response_data;
 
-    await fetch("http://localhost:5000/Login",{
+    await fetch("http://localhost:5001/Login",{
       method:"POST",
       headers:{
         Accept:"application/form-data",
@@ -98,7 +99,9 @@ const Login = () => {
         </div>
         
         <button className=" md:w-full lg:w-full max-sm:w-3/6 max-sm:ml-20 bg-latest_color text-white py-2 rounded-md hover:bg-red-600 transition-colors hover:bg-[linear-gradient(90deg,rgba(100,45,135,1)0%,rgba(200,33,33,1)0%,rgba(202,141,55,1)100%)]" onClick={()=>Login_Api_Caller()}>Continue</button>
-
+        <p className="text-right text-sm text-gray-600 mt-4">
+         <Link className="text-red-600 hover:underline cursor-pointer" to="/forgot">Forgot Password</Link>
+        </p>
         <p className="text-center text-sm text-gray-600 mt-4">
           Don't have an account? <span className="text-red-600 hover:underline cursor-pointer" onClick={()=>{Setlogin(false)}}>Sign Up here</span>
         </p>
