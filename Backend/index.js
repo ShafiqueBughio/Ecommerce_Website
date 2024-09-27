@@ -16,7 +16,7 @@ const port = process.env.PORT || 5001;
 
 // CORS setup
 app.use(cors({
-    origin: ['https://portfoliofrontend-azure.vercel.app'], // Allowed origins
+    origin: ['https://ecommerce-website-frontend-sigma.vercel.app/'], // Allowed origins
     methods: ["POST", "GET", "OPTIONS"],
     credentials: true // Enable credentials (cookies, authorization headers, etc.)
 }));
