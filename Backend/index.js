@@ -25,7 +25,7 @@ const { Order_Router } = require("./Routes/Order_Routes");
 //react js project connect with express js at port 4000
 
 app.use(cors({
-    origin: ['https://portfoliofrontend-azure.vercel.app'], // Local and production origins
+    origin: ['https://ecommerce-website-frontend-sigma.vercel.app'], // Local and production origins
     methods: ["POST", "GET", "OPTIONS"],
     credentials: true // Enable credentials (cookies, authorization headers, etc.)
   }));
