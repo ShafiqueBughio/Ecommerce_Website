@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Signup from './Signup';
 import { Link } from 'react-router-dom';
+import axios from "axios";
+
 
 //toastify
 import { toast} from 'react-toastify';
@@ -27,20 +29,18 @@ const Login = () => {
   }
 
   async function Login_Api_Caller(){
-    let response_data;
+    
 
-    await fetch("http://localhost:5001/Login",{
-      method:"POST",
+   const response_data =  await axios.post("https://ecommerce-website-backend-zeta.vercel.app/Login",formData,{
+    
       headers:{
         Accept:"application/form-data",
          'Content-Type':'application/json'
       },
-      body:JSON.stringify(formData)
+      withCredentials: true
     })
-    .then((resp)=>resp.json())
-    .then((data)=>{
-      response_data = data;
-    })
+    
+   
 
     if(response_data.success){
       localStorage.setItem("auth-token",response_data.token);

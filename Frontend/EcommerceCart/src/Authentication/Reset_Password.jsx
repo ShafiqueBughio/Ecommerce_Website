@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const Reset_Password = () => {
   const { userId, token } = useParams();
@@ -26,20 +27,17 @@ const Reset_Password = () => {
   }
 
   async function Reset_Api_Caller() {
-    let response_data;
+    
 
-    await fetch(`http://localhost:5001/reset-password/${userId}/${token}`, {
-      method: "POST",
+   const response_data =  await axios.post(`https://ecommerce-website-backend-zeta.vercel.app/${userId}/${token}`,formData, {
+  
       headers: {
         Accept: "application/form-data",
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData)
+    withCredentials:true,
     })
-    .then((resp) => resp.json())
-    .then((data) => {
-      response_data = data;
-    });
+  
 
     if (response_data.success) {
       toast.success(`Password Reset Successfully`);

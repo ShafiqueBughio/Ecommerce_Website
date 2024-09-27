@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import Items from '../Compponents/Items';
+import axios from 'axios';
 
 const Popular = () => {
   const [popular_women,Set_Popular_Women] = useState([]);
 
-  useEffect(()=>{
-    fetch("http://localhost:5001/popular")
-    .then((resp)=>resp.json())
-    .then((data)=>{
-      Set_Popular_Women(data);
-    })
-  },[])
+  useEffect(() => {
+    const fetchPopularWomenProducts = async () => {
+      try {
+        const resp = await axios.get("https://ecommerce-website-backend-zeta.vercel.app/popular");
+        Set_Popular_Women(resp.data); // Set the data directly from resp.data
+      } catch (error) {
+        console.error("Error fetching popular women products:", error);
+      }
+    };
+  
+    fetchPopularWomenProducts();
+  }, []);
+  
   return (
     <div className='p-8'>
       <div className='text-center mb-8'>

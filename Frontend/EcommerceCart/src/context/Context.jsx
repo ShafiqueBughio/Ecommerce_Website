@@ -1,6 +1,7 @@
 
 import React, { useEffect } from "react";
 import { createContext,useState } from "react";
+import axios from "axios";
 
 
 export const ShopContext = createContext(null);
@@ -37,98 +38,130 @@ function Handle_Search(e){
 }
 
 // UseEffect for all products mount on screen
-useEffect(()=>{
-  fetch("http://localhost:5001/allproducts")
-  .then((resp)=>resp.json())
-  .then((data)=>SetProductData(data));
-},[])
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const resp = await axios.get("https://ecommerce-website-backend-zeta.vercel.app/allproducts");
+      SetProductData(resp.data); // Use `resp.data` to access the actual data
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  fetchData();
+}, []);
 
- // Handle search functionality
- useEffect(() => {
-  if (query) {
-    // If there is a query, fetch the searched products
-    fetch(`http://localhost:5001/searchproducts?q=${query}`)
-      .then((resp) => resp.json())
-      .then((data) => Set_Querry_Data(data));
-  } else {
-    // If query is empty, reset to show all products
-    Set_Querry_Data([]); // Reset search data
-  }
+
+useEffect(() => {
+  const fetchData = async () => {
+    if (query) {
+      try {
+        // Fetch the searched products based on query
+        const resp = await axios.get(`https://ecommerce-website-backend-zeta.vercel.app?q=${query}`);
+        Set_Querry_Data(resp.data); // Set the fetched data
+      } catch (error) {
+        console.error('Error fetching search results:', error);
+      }
+    } else {
+      // Reset search data when query is empty
+      Set_Querry_Data([]);
+    }
+  };
+
+  fetchData();
 }, [query]);
 
 
 
 
 
-//Get Cart Data
-useEffect(()=>{
-  if(localStorage.getItem('auth-token')){
-    fetch("http://localhost:5001/cartData",{
-      method:"POST",
-      headers:{
-        Accept:"application/form-data",
-        'auth-token':`${localStorage.getItem('auth-token')}`,
-        'Content-Type':"application/json",
-      },
-      body:""
-    })
-    .then((resp)=>resp.json())
-    .then((data)=>{
-      SetCartItems(data);
-    })
-  }
-},[])
 
-
-
-
-
-const AddToCart = (ItemId)=>{
-SetCartItems((prev)=>({...prev,[ItemId]:prev[ItemId]+1}))
-
-//check is user authenticate or not 
-if(localStorage.getItem('auth-token')){
-  fetch("http://localhost:5001/AddToCart",{
-    method:"POST",
-    headers:{
-      Accept:"application/form-data",
-      'auth-token':`${localStorage.getItem('auth-token')}`,
-      'Content-Type':"application/json"
-    },
-    body:JSON.stringify({"itemId":ItemId})
-  })
-  .then((resp)=>resp.json())
-  .then((data)=>{
-   if(data){
-    console.log(data)
-   }
-  })
-}
-
-}
-
-
-const RemoveFromCart = (ItemId)=>{
-  SetCartItems((prev)=>({...prev,[ItemId]:prev[ItemId]-1}))
- 
-    if(localStorage.getItem('auth-token')){
-      fetch("http://localhost:5001/removeCart",{
-        method:"DELETE",
-        headers:{
-          Accept:"application/form-data",
-          'auth-token':`${localStorage.getItem('auth-token')}`,
-          'Content-Type':"application/json",
-        },
-        body:JSON.stringify({"itemId":ItemId})
-      })
-      .then((resp)=>resp.json())
-      .then((data)=>{
-        if(data){
-          console.log(data)
-        }
-      })
+useEffect(() => {
+  const fetchCartData = async () => {
+    const token = localStorage.getItem('auth-token');
+    
+    if (token) {
+      try {
+        const response = await axios.post("https://ecommerce-website-backend-zeta.vercel.app/cartData", 
+          {},  // For POST requests without a body, you can pass an empty object
+          {
+            headers: {
+              Accept: "application/form-data",
+              'auth-token': token,
+              'Content-Type': "application/json",
+            },
+            withCredentials:true,
+          }
+        );
+        
+        SetCartItems(response.data); // Axios automatically parses the JSON response
+      } catch (error) {
+        console.error("Error fetching cart data:", error);
+      }
     }
+  };
+
+  fetchCartData();
+}, []);
+
+
+const AddToCart = (ItemId) => {
+  // Update the cart items state
+  SetCartItems((prev) => ({ ...prev, [ItemId]: (prev[ItemId] || 0) + 1 }));
+
+  // Check if the user is authenticated
+  const token = localStorage.getItem('auth-token');
+  
+  if (token) {
+    // Make the axios POST request
+    axios.post("https://ecommerce-website-backend-zeta.vercel.app/AddToCart", 
+      { itemId: ItemId }, // Send the itemId in the request body
+      {
+        headers: {
+          Accept: "application/form-data",
+          'auth-token': token,
+          'Content-Type': "application/json",
+        },
+        withCredentials:true,
+      }
+    )
+    .then((response) => {
+      console.log(response.data); // Log the response data
+    })
+    .catch((error) => {
+      console.error("Error adding to cart:", error); // Error handling
+    });
   }
+};
+
+
+
+
+
+const RemoveFromCart = (ItemId) => {
+  // Update the cart items state
+  SetCartItems((prev) => ({ ...prev, [ItemId]: prev[ItemId] - 1 }));
+
+  // Check if the user is authenticated
+  const token = localStorage.getItem('auth-token');
+
+  if (token) {
+    // Make the DELETE request with axios
+    axios.delete("https://ecommerce-website-backend-zeta.vercel.app/removeCart", {
+      headers: {
+        Accept: "application/form-data",
+        'auth-token': token,
+        'Content-Type': "application/json",
+      },
+      data: { itemId: ItemId }, // Pass the data object for DELETE request
+    })
+    .then((response) => {
+      console.log(response.data); // Log the response data
+    })
+    .catch((error) => {
+      console.error("Error removing item from cart:", error); // Error handling
+    });
+  }
+};
 
   //get Total cart function 
   const GetTotalCartAmount = ()=>{

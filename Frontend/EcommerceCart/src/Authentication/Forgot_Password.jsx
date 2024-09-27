@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { toast} from 'react-toastify';
+import axios from 'axios';
 
 const Forgot_Password = () => {
 
@@ -14,20 +15,17 @@ const Forgot_Password = () => {
       }
     
       async function Forgot_Api_Caller(){
-        let response_data;
+        
     
-        await fetch("http://localhost:5001/forgot",{
-          method:"POST",
+       const response_data =  await axios.post("https://ecommerce-website-backend-zeta.vercel.app/forgot",formData,{
+          
           headers:{
             Accept:"application/form-data",
              'Content-Type':'application/json'
           },
-          body:JSON.stringify(formData)
+        withCredentials:true,
         })
-        .then((resp)=>resp.json())
-        .then((data)=>{
-          response_data = data;
-        })
+       
     
         if(response_data.success){
           

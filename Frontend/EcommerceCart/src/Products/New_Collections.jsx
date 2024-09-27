@@ -4,11 +4,19 @@ import Items from '../Compponents/Items';
 const New_Collections = () => {
   const [new_collections,Set_New_Collections] = useState([]);
 
-  useEffect(()=>{
-    fetch("http://localhost:5001/newcollections")
-    .then((resp)=>resp.json())
-    .then((data)=>Set_New_Collections(data));
-  },[])
+  useEffect(() => {
+  const fetchNewCollections = async () => {
+    try {
+      const resp = await axios.get("https://ecommerce-website-backend-zeta.vercel.app/newcollections");
+      Set_New_Collections(resp.data); // Set the data from resp.data
+    } catch (error) {
+      console.error("Error fetching new collections:", error);
+    }
+  };
+
+  fetchNewCollections();
+}, []);
+
 
   return (
    <div className='p-4'>

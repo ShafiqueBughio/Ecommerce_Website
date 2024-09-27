@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 //toastify
 import { toast} from 'react-toastify';
+import axios from 'axios';
 
 const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
 
@@ -18,20 +19,17 @@ const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
 
     async function SignUp_Api_Caller(){
 
-      let response_data;    //this contain success ,token
+          //this contain success ,token
 
-        await fetch("http://localhost:5001/signup",{
-            method:"post",
+      const response_data = await axios.post("https://ecommerce-website-backend-zeta.vercel.app/signup",FormData,{
+          
             headers:{
                 Accept:"application/form-data",
                   'Content-Type':'application/json'
             },
-            body:JSON.stringify(FormData)
+            withCredentials: true
         })
-        .then((resp)=>resp.json())
-        .then((data)=>{
-          response_data = data;
-        })
+       
 
         if(response_data.success){
           localStorage.setItem("auth-token",response_data.token);
