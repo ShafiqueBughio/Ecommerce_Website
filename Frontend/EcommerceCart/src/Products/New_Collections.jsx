@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Items from '../Compponents/Items';
+import axios from 'axios';
 
 const New_Collections = () => {
   const [new_collections,Set_New_Collections] = useState([]);
