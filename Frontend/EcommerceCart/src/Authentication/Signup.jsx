@@ -21,7 +21,7 @@ const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
 
           //this contain success ,token
 
-      const response_data = await axios.post("https://ecommerce-website-backend-zeta.vercel.app/signup",FormData,{
+      const response_data = await axios.post("https://ecommerce-website-backend-pink.vercel.app/signup",FormData,{
           
             headers:{
                 Accept:"application/form-data",

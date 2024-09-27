@@ -41,7 +41,7 @@ function Handle_Search(e){
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const resp = await axios.get("https://ecommerce-website-backend-zeta.vercel.app/allproducts");
+      const resp = await axios.get("https://ecommerce-website-backend-pink.vercel.app/allproducts");
       SetProductData(resp.data); // Use `resp.data` to access the actual data
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -56,7 +56,7 @@ useEffect(() => {
     if (query) {
       try {
         // Fetch the searched products based on query
-        const resp = await axios.get(`https://ecommerce-website-backend-zeta.vercel.app?q=${query}`);
+        const resp = await axios.get(`https://ecommerce-website-backend-pink.vercel.app?q=${query}`);
         Set_Querry_Data(resp.data); // Set the fetched data
       } catch (error) {
         console.error('Error fetching search results:', error);
@@ -81,7 +81,7 @@ useEffect(() => {
     
     if (token) {
       try {
-        const response = await axios.post("https://ecommerce-website-backend-zeta.vercel.app/cartData", 
+        const response = await axios.post("https://ecommerce-website-backend-pink.vercel.app/cartData", 
           {},  // For POST requests without a body, you can pass an empty object
           {
             headers: {
@@ -113,7 +113,7 @@ const AddToCart = (ItemId) => {
   
   if (token) {
     // Make the axios POST request
-    axios.post("https://ecommerce-website-backend-zeta.vercel.app/AddToCart", 
+    axios.post("https://ecommerce-website-backend-pink.vercel.app/AddToCart", 
       { itemId: ItemId }, // Send the itemId in the request body
       {
         headers: {
@@ -146,7 +146,7 @@ const RemoveFromCart = (ItemId) => {
 
   if (token) {
     // Make the DELETE request with axios
-    axios.delete("https://ecommerce-website-backend-zeta.vercel.app/removeCart", {
+    axios.delete("https://ecommerce-website-backend-pink.vercel.app/removeCart", {
       headers: {
         Accept: "application/form-data",
         'auth-token': token,

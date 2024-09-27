@@ -7,7 +7,7 @@ const New_Collections = () => {
   useEffect(() => {
   const fetchNewCollections = async () => {
     try {
-      const resp = await axios.get("https://ecommerce-website-backend-zeta.vercel.app/newcollections");
+      const resp = await axios.get("https://ecommerce-website-backend-pink.vercel.app/newcollections");
       Set_New_Collections(resp.data); // Set the data from resp.data
     } catch (error) {
       console.error("Error fetching new collections:", error);

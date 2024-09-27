@@ -29,7 +29,7 @@ const Reset_Password = () => {
   async function Reset_Api_Caller() {
     
 
-   const response_data =  await axios.post(`https://ecommerce-website-backend-zeta.vercel.app/${userId}/${token}`,formData, {
+   const response_data =  await axios.post(`https://ecommerce-website-backend-pink.vercel.app/${userId}/${token}`,formData, {
   
       headers: {
         Accept: "application/form-data",

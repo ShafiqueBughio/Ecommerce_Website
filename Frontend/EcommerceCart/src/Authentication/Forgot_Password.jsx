@@ -17,7 +17,7 @@ const Forgot_Password = () => {
       async function Forgot_Api_Caller(){
         
     
-       const response_data =  await axios.post("https://ecommerce-website-backend-zeta.vercel.app/forgot",formData,{
+       const response_data =  await axios.post("https://ecommerce-website-backend-pink.vercel.app/forgot",formData,{
           
           headers:{
             Accept:"application/form-data",

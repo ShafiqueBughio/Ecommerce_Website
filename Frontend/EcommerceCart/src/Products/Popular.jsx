@@ -8,7 +8,7 @@ const Popular = () => {
   useEffect(() => {
     const fetchPopularWomenProducts = async () => {
       try {
-        const resp = await axios.get("https://ecommerce-website-backend-zeta.vercel.app/popular");
+        const resp = await axios.get("https://ecommerce-website-backend-pink.vercel.app/popular");
         Set_Popular_Women(resp.data); // Set the data directly from resp.data
       } catch (error) {
         console.error("Error fetching popular women products:", error);
