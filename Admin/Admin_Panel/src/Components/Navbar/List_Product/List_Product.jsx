@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import axios from "axios"
 
 import Filter_Product from '../Filter_Product/Filter_Product';
 
@@ -9,9 +10,8 @@ const List_Product = () => {
   const [all_Products,Set_All_Products] = useState([]);
 
   async function Get_All_Products (){
-    await fetch("http://localhost:5001/allproducts")
-    .then((resp)=>resp.json())
-    .then((data)=>{Set_All_Products(data)});
+    const resp = await axios.get("https://ecommerce-website-backend-zeta.vercel.app/allproducts")
+    Set_All_Products(resp.data);
   }
 //this useEffect will invoke when we land on page
 useEffect(()=>{
@@ -20,26 +20,27 @@ useEffect(()=>{
 
 //function for Remove button
 async function Handle_remove_product (id){
-  await fetch("http://localhost:5001/removeproduct",{
-    method:'DELETE', 
+  
+ const resp =  await axios.delete("https://ecommerce-website-backend-zeta.vercel.app/removeproduct",{id:id},{
+    
     headers:{
       Accept:'application/json',
       'Content-Type':'application/json'
     },
-    body:JSON.stringify({id:id})
+     withCredentials: true
+    
 
   })
   //refresh component data 
-  .then((resp)=>resp.json())
-  .then((data)=>{
-    if(data.status === 200){
+  
+    if(resp.data.status === 200){
        Get_All_Products();
       toast.success(data.message)
     }
     else{
      toast.error("Failed to remove")
     }
-  })
+  
 }
 
 

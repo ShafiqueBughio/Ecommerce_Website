@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import upload_image from "../../../assets/upload_area.svg"
 import { toast } from 'react-toastify';
+import axios from "axios";
 
 
 const Add_Product = () => {
@@ -27,7 +28,7 @@ const Add_Product = () => {
   const Add_Product = async()=>{
       console.log(Product_detail);
 
-      let response_data;  //response from server
+        //response from server
 
       let Product = Product_detail;
 
@@ -38,38 +39,39 @@ const Add_Product = () => {
 
       formData.append('product',image);
 
-      await fetch("http://localhost:5001/upload",{
-        method:'POST',
+    const response_data =   await axios.post("https://ecommerce-website-backend-zeta.vercel.app/upload",formData,{
+       
         headers:{
-          Accept:"application/json"
+          Accept:"application/json",
+          'Content-Type':'application/json',
         },
-        body:formData
+       withCredentials:true,
       })
-      .then((resp)=>resp.json()).then((data)=>response_data = data);
+      
 
       if(response_data.status === 200){
         Product.image = response_data.image_url;
 
         //Add Product into Database
 
-        await fetch("http://localhost:5001/addproduct",{
-          method:'POST',
+       const resp =  await axios.post("https://ecommerce-website-backend-zeta.vercel.app/addproduct",Product,{
+          
           headers:{
             Accept:"application/json",
             'Content-Type':'application/json'
           },
-          body:JSON.stringify(Product)
+          withCredentials: true,
         })
-        .then((resp)=>resp.json()).then((data)=>
-       {
-        if(data.status === 200){
+        
+       
+        if(resp.data.status === 200){
           toast.success(data.message);
         } 
         else{
           toast.error("Failed to add")
         }
-       }
-        );
+       
+      
       }
   }
 
