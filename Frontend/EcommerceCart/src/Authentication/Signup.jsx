@@ -31,7 +31,7 @@ const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
         })
        
 
-        if(response_data.success){
+        if(response_data.data.success){
           localStorage.setItem("auth-token",response_data.token);
           toast.success("Account created successfully! Start shopping now.")
          setTimeout(()=>{ window.location.replace("/");},2000)
@@ -41,6 +41,8 @@ const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
           alert(response_data.errors)
         }
     }
+
+    axios.defaults.withCredentials = true;
 
   return (
     <div className='ml-10'>
