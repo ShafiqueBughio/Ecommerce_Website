@@ -5,6 +5,8 @@ import axios from 'axios';
 const Popular = () => {
   const [popular_women,Set_Popular_Women] = useState([]);
 
+  axios.defaults.withCredentials = true;
+
   useEffect(() => {
     const fetchPopularWomenProducts = async () => {
       try {

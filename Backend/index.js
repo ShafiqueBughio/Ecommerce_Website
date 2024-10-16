@@ -17,7 +17,7 @@ const port = process.env.PORT || 5001;
 // CORS setup
 app.use(cors({
     origin: ['https://ecommerce-website-frontend-sigma.vercel.app/'], // Allowed origins
-    methods: ["POST", "GET", "OPTIONS"],
+    methods: ["POST", "GET"],
     credentials: true // Enable credentials (cookies, authorization headers, etc.)
 }));
 

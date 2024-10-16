@@ -5,6 +5,8 @@ import axios from 'axios';
 const New_Collections = () => {
   const [new_collections,Set_New_Collections] = useState([]);
 
+  axios.defaults.withCredentials = true;
+
   useEffect(() => {
   const fetchNewCollections = async () => {
     try {

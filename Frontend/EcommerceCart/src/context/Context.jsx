@@ -21,6 +21,7 @@ export const Shop_Context_Provider = (props) => {
     let value = e.target.value;
     Set_Querry(value);
   }
+  axios.defaults.withCredentials = true;
 
   // UseEffect for fetching all products on mount
   useEffect(() => {
@@ -69,7 +70,7 @@ export const Shop_Context_Provider = (props) => {
                 'auth-token': token,
                 'Content-Type': "application/json",
               },
-              withCredentials: true,
+          
             }
           );
 
@@ -97,7 +98,7 @@ export const Shop_Context_Provider = (props) => {
             'auth-token': token,
             'Content-Type': "application/json",
           },
-          withCredentials: true,
+       
         }
       )
       .then((response) => {

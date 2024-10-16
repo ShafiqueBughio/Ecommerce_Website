@@ -25,6 +25,7 @@ const Reset_Password = () => {
   function Handle_Reset_Password(e) {
     SetFormData({ ...formData, [e.target.name]: e.target.value });
   }
+  axios.defaults.withCredentials = true;
 
   async function Reset_Api_Caller() {
     
@@ -35,7 +36,7 @@ const Reset_Password = () => {
         Accept: "application/form-data",
         'Content-Type': 'application/json',
       },
-    withCredentials:true,
+ 
     })
   
 

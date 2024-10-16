@@ -27,6 +27,7 @@ const Login = () => {
   function Handle_Login(e){
     SetFormData({...formData,[e.target.name]:e.target.value});
   }
+  axios.defaults.withCredentials = true;
 
   async function Login_Api_Caller(){
     
@@ -37,7 +38,7 @@ const Login = () => {
         Accept:"application/form-data",
          'Content-Type':'application/json'
       },
-      withCredentials: true
+      
     })
     
    

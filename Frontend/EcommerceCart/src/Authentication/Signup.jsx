@@ -11,7 +11,7 @@ const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
         password:"",
     })
 
- 
+    axios.defaults.withCredentials = true; 
 
     function Handle_Signup(e){
         return SetFormData({...FormData,[e.target.name]:e.target.value});
@@ -26,8 +26,8 @@ const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
             headers:{
                 Accept:"application/form-data",
                   'Content-Type':'application/json'
-            },
-            withCredentials: true
+            }
+            
         })
        
 
@@ -38,11 +38,10 @@ const Signup = ({Login,Setlogin,Show_Password,Toggle_Show_Password}) => {
         }
         
         else{
-          alert(response_data.errors)
+          alert(response_data.data.errors)
         }
     }
 
-    axios.defaults.withCredentials = true;
 
   return (
     <div className='ml-10'>

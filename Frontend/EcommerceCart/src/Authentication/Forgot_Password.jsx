@@ -13,6 +13,8 @@ const Forgot_Password = () => {
     function Handle_Forgot(e){
         SetFormData({...formData,[e.target.name]:e.target.value});
       }
+
+      axios.defaults.withCredentials = true;
     
       async function Forgot_Api_Caller(){
         
@@ -23,7 +25,7 @@ const Forgot_Password = () => {
             Accept:"application/form-data",
              'Content-Type':'application/json'
           },
-        withCredentials:true,
+
         })
        
     
